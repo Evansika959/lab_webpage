@@ -1,0 +1,35 @@
+eyebrow: "Contact"
+title: "Get in Touch"
+formTitle: "Send us a Message"
+formDescription: "Fill out the form below and we will get back to you as soon as possible."
+labels:
+  firstName: "First Name"
+  lastName: "Last Name"
+  email: "Email"
+  subject: "Subject"
+  message: "Message"
+  submit: "Send Message"
+info:
+  - icon: "MapPin"
+    title: "Address"
+    details:
+      - "Engineering Building, Room 301"
+      - "123 University Ave"
+      - "Tech City, TC 12345"
+  - icon: "Mail"
+    title: "Email"
+    details:
+      - "ecelab@university.edu"
+      - "admissions@ecelab.edu"
+  - icon: "Phone"
+    title: "Phone"
+    details:
+      - "+1 (555) 123-4567"
+      - "+1 (555) 123-4568"
+  - icon: "Clock"
+    title: "Office Hours"
+    details:
+      - "Monday - Friday: 9am - 5pm"
+      - "Saturday - Sunday: Closed"
+description: >
+  Interested in collaborating with us or joining our research team? We would love to hear from you.

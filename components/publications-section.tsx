@@ -1,64 +1,36 @@
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Markdown } from "@/components/markdown"
+import type { PublicationsContent, SectionContent } from "@/lib/content"
 import { ExternalLink, FileText } from "lucide-react"
+import Link from "next/link"
 
-const publications = [
-  {
-    title: "Energy-Efficient Neural Network Accelerator for Edge Devices",
-    authors: "S. Chen, E. Watson, M. Roberts",
-    venue: "IEEE Transactions on VLSI Systems",
-    year: "2025",
-    type: "Journal",
-  },
-  {
-    title: "A Novel Approach to Side-Channel Attack Mitigation in IoT Devices",
-    authors: "J. Liu, S. Chen",
-    venue: "ACM Conference on Computer and Communications Security",
-    year: "2025",
-    type: "Conference",
-  },
-  {
-    title: "High-Efficiency GaN-Based DC-DC Converter for Electric Vehicles",
-    authors: "A. Patel, D. Kim",
-    venue: "IEEE Transactions on Power Electronics",
-    year: "2024",
-    type: "Journal",
-  },
-  {
-    title: "Deep Learning-Based Channel Estimation for Massive MIMO Systems",
-    authors: "M. Roberts, D. Kim",
-    venue: "IEEE International Conference on Communications",
-    year: "2024",
-    type: "Conference",
-  },
-  {
-    title: "FPGA Implementation of Real-Time Object Detection Using YOLO",
-    authors: "E. Watson, S. Chen",
-    venue: "ACM/SIGDA International Symposium on FPGAs",
-    year: "2024",
-    type: "Conference",
-  },
-]
+type PublicationsSectionProps = {
+  content: SectionContent<PublicationsContent>
+}
 
-export function PublicationsSection() {
+export function PublicationsSection({ content }: PublicationsSectionProps) {
+  const { data, html } = content
+
   return (
     <section id="publications" className="py-24">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <h2 className="text-sm font-semibold uppercase tracking-wide text-primary">
-            Publications
+            {data.eyebrow}
           </h2>
           <p className="mt-2 text-3xl font-bold tracking-tight text-foreground sm:text-4xl text-balance">
-            Recent Research Output
+            {data.title}
           </p>
-          <p className="mt-4 text-lg text-muted-foreground text-pretty">
-            Our research is published in top-tier journals and conferences. Here are some of our recent publications.
-          </p>
+          <Markdown
+            html={html}
+            className="mt-4 text-lg text-muted-foreground text-pretty"
+          />
         </div>
 
         <div className="mt-16 space-y-4">
-          {publications.map((pub, index) => (
+          {data.items.map((pub, index) => (
             <Card
               key={index}
               className="group transition-all hover:border-primary/50 bg-card"
@@ -81,9 +53,11 @@ export function PublicationsSection() {
                       {pub.title}
                     </CardTitle>
                   </div>
-                  <Button variant="ghost" size="icon" className="shrink-0">
-                    <ExternalLink className="h-4 w-4" />
-                    <span className="sr-only">View publication</span>
+                  <Button variant="ghost" size="icon" className="shrink-0" asChild>
+                    <Link href={pub.url || "#"}>
+                      <ExternalLink className="h-4 w-4" />
+                      <span className="sr-only">View publication</span>
+                    </Link>
                   </Button>
                 </div>
               </CardHeader>
@@ -101,7 +75,7 @@ export function PublicationsSection() {
         <div className="mt-12 text-center">
           <Button variant="outline" size="lg" className="gap-2 bg-transparent">
             <FileText className="h-4 w-4" />
-            View All Publications
+            {data.buttonLabel}
           </Button>
         </div>
       </div>

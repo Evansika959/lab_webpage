@@ -1,0 +1,17 @@
+titleHighlight: "Advanced"
+titleLineOne: "Electrical &"
+titleLineTwo: "Computer Engineering Lab"
+primaryButton: "Explore Our Research"
+secondaryButton: "View Publications"
+stats:
+  - value: "25+"
+    label: "Active Researchers"
+  - value: "150+"
+    label: "Publications"
+  - value: "$5M+"
+    label: "Research Funding"
+  - value: "12"
+    label: "Industry Partners"
+description: >
+  Pioneering research at the intersection of hardware and software. We develop next-generation
+  systems for embedded computing, signal processing, and intelligent electronics.

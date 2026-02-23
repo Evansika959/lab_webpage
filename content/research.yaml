@@ -1,0 +1,30 @@
+eyebrow: "Research Areas"
+title: "Exploring the Frontiers of Technology"
+areas:
+  - icon: "Cpu"
+    title: "Embedded Systems"
+    description: "Designing low-power, high-performance embedded processors and SoCs for IoT and edge computing applications."
+    tags: ["FPGA", "ARM", "RISC-V", "Real-time"]
+  - icon: "Radio"
+    title: "Signal Processing"
+    description: "Advanced algorithms for audio, image, and communication signal processing with real-time implementation."
+    tags: ["DSP", "Filters", "Compression", "ML"]
+  - icon: "BrainCircuit"
+    title: "Machine Learning Hardware"
+    description: "Custom accelerators and architectures optimized for neural network inference at the edge."
+    tags: ["Neural Networks", "Accelerators", "Quantization"]
+  - icon: "Battery"
+    title: "Power Electronics"
+    description: "Efficient power conversion systems, renewable energy integration, and battery management solutions."
+    tags: ["Converters", "Inverters", "EV", "Solar"]
+  - icon: "Wifi"
+    title: "Wireless Communications"
+    description: "Next-generation wireless systems, antenna design, and RF circuit development for 5G and beyond."
+    tags: ["5G", "MIMO", "RF Design", "Antennas"]
+  - icon: "Shield"
+    title: "Hardware Security"
+    description: "Secure hardware design, cryptographic implementations, and protection against side-channel attacks."
+    tags: ["Crypto", "PUF", "Side-channel", "Secure Boot"]
+description: >
+  Our research spans multiple domains within electrical and computer engineering, with a focus
+  on practical applications and real-world impact.

@@ -7,19 +7,22 @@ import { PublicationsSection } from "@/components/publications-section"
 import { FacilitiesSection } from "@/components/facilities-section"
 import { ContactSection } from "@/components/contact-section"
 import { Footer } from "@/components/footer"
+import { getPageContent } from "@/lib/content"
 
-export default function Home() {
+export default async function Home() {
+  const content = await getPageContent()
+
   return (
     <main className="min-h-screen bg-background">
-      <Header />
-      <HeroSection />
-      <AboutSection />
-      <ResearchSection />
-      <TeamSection />
-      <PublicationsSection />
-      <FacilitiesSection />
-      <ContactSection />
-      <Footer />
+      <Header content={content.header.data} />
+      <HeroSection content={content.hero} />
+      <AboutSection content={content.about} />
+      <ResearchSection content={content.research} />
+      <TeamSection content={content.team} />
+      <PublicationsSection content={content.publications} />
+      <FacilitiesSection content={content.facilities} />
+      <ContactSection content={content.contact} />
+      <Footer content={content.footer.data} />
     </main>
   )
 }

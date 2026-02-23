@@ -1,34 +1,19 @@
 import Link from "next/link"
+import type { FooterContent } from "@/lib/content"
 import { Github, Linkedin, Twitter } from "lucide-react"
 
-const footerLinks = {
-  research: [
-    { name: "Embedded Systems", href: "#" },
-    { name: "Signal Processing", href: "#" },
-    { name: "ML Hardware", href: "#" },
-    { name: "Power Electronics", href: "#" },
-  ],
-  resources: [
-    { name: "Publications", href: "#publications" },
-    { name: "Facilities", href: "#facilities" },
-    { name: "Open Positions", href: "#" },
-    { name: "News & Events", href: "#" },
-  ],
-  connect: [
-    { name: "Contact Us", href: "#contact" },
-    { name: "Industry Partners", href: "#" },
-    { name: "Alumni Network", href: "#" },
-    { name: "Newsletter", href: "#" },
-  ],
+const iconMap = { Twitter, Linkedin, Github }
+
+type FooterProps = {
+  content: FooterContent
 }
 
-const socialLinks = [
-  { name: "Twitter", href: "#", icon: Twitter },
-  { name: "LinkedIn", href: "#", icon: Linkedin },
-  { name: "GitHub", href: "#", icon: Github },
-]
+export function Footer({ content }: FooterProps) {
+  const showAccent = content.brand.includes(content.brandAccent)
+  const brandRemainder = showAccent
+    ? content.brand.replace(content.brandAccent, "").trim()
+    : content.brand
 
-export function Footer() {
   return (
     <footer className="border-t border-border bg-background">
       <div className="mx-auto max-w-7xl px-6 py-12 lg:px-8">
@@ -37,73 +22,56 @@ export function Footer() {
           <div className="lg:col-span-1">
             <Link href="/" className="inline-block">
               <span className="text-xl font-bold tracking-tight text-foreground">
-                <span className="text-primary">ECE</span> Lab
+                {showAccent ? (
+                  <>
+                    <span className="text-primary">{content.brandAccent}</span>{" "}
+                    {brandRemainder}
+                  </>
+                ) : (
+                  content.brand
+                )}
               </span>
             </Link>
             <p className="mt-4 text-sm text-muted-foreground max-w-xs">
-              Advancing the frontiers of electrical and computer engineering through innovative research and education.
+              {content.description}
             </p>
             <div className="mt-6 flex gap-4">
-              {socialLinks.map((link) => (
-                <Link
-                  key={link.name}
-                  href={link.href}
-                  className="text-muted-foreground hover:text-primary transition-colors"
-                >
-                  <link.icon className="h-5 w-5" />
-                  <span className="sr-only">{link.name}</span>
-                </Link>
-              ))}
+              {content.social.map((link) => {
+                const Icon = iconMap[link.icon as keyof typeof iconMap] ?? Twitter
+
+                return (
+                  <Link
+                    key={link.name}
+                    href={link.href}
+                    className="text-muted-foreground hover:text-primary transition-colors"
+                  >
+                    <Icon className="h-5 w-5" />
+                    <span className="sr-only">{link.name}</span>
+                  </Link>
+                )
+              })}
             </div>
           </div>
 
           {/* Links */}
           <div className="grid grid-cols-3 gap-8 lg:col-span-3">
-            <div>
-              <h3 className="text-sm font-semibold text-foreground">Research</h3>
-              <ul className="mt-4 space-y-3">
-                {footerLinks.research.map((link) => (
-                  <li key={link.name}>
-                    <Link
-                      href={link.href}
-                      className="text-sm text-muted-foreground hover:text-primary transition-colors"
-                    >
-                      {link.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <h3 className="text-sm font-semibold text-foreground">Resources</h3>
-              <ul className="mt-4 space-y-3">
-                {footerLinks.resources.map((link) => (
-                  <li key={link.name}>
-                    <Link
-                      href={link.href}
-                      className="text-sm text-muted-foreground hover:text-primary transition-colors"
-                    >
-                      {link.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <h3 className="text-sm font-semibold text-foreground">Connect</h3>
-              <ul className="mt-4 space-y-3">
-                {footerLinks.connect.map((link) => (
-                  <li key={link.name}>
-                    <Link
-                      href={link.href}
-                      className="text-sm text-muted-foreground hover:text-primary transition-colors"
-                    >
-                      {link.name}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            {content.columns.map((column) => (
+              <div key={column.title}>
+                <h3 className="text-sm font-semibold text-foreground">{column.title}</h3>
+                <ul className="mt-4 space-y-3">
+                  {column.links.map((link) => (
+                    <li key={link.name}>
+                      <Link
+                        href={link.href}
+                        className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                      >
+                        {link.name}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </div>
         </div>
 

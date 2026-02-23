@@ -1,7 +1,15 @@
 import { Button } from "@/components/ui/button"
+import { Markdown } from "@/components/markdown"
 import { ArrowRight, Cpu, Zap, CircuitBoard } from "lucide-react"
+import type { HeroContent, SectionContent } from "@/lib/content"
 
-export function HeroSection() {
+type HeroSectionProps = {
+  content: SectionContent<HeroContent>
+}
+
+export function HeroSection({ content }: HeroSectionProps) {
+  const { data, html } = content
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
       {/* Background pattern */}
@@ -21,43 +29,34 @@ export function HeroSection() {
         </div>
 
         <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-6xl lg:text-7xl text-balance">
-          <span className="text-primary">Advanced</span> Electrical &
+          <span className="text-primary">{data.titleHighlight}</span> {data.titleLineOne}
           <br />
-          Computer Engineering Lab
+          {data.titleLineTwo}
         </h1>
-        
-        <p className="mt-6 text-lg leading-relaxed text-muted-foreground max-w-2xl mx-auto text-pretty">
-          Pioneering research at the intersection of hardware and software. We develop next-generation systems for embedded computing, signal processing, and intelligent electronics.
-        </p>
+
+        <Markdown
+          html={html}
+          className="mt-6 text-lg leading-relaxed text-muted-foreground max-w-2xl mx-auto text-pretty"
+        />
         
         <div className="mt-10 flex items-center justify-center gap-4 flex-wrap">
           <Button size="lg" className="gap-2">
-            Explore Our Research
+            {data.primaryButton}
             <ArrowRight className="h-4 w-4" />
           </Button>
           <Button variant="outline" size="lg">
-            View Publications
+            {data.secondaryButton}
           </Button>
         </div>
 
         {/* Stats */}
         <div className="mt-20 grid grid-cols-2 gap-8 sm:grid-cols-4 max-w-3xl mx-auto">
-          <div className="text-center">
-            <div className="text-3xl font-bold text-primary">25+</div>
-            <div className="text-sm text-muted-foreground mt-1">Active Researchers</div>
-          </div>
-          <div className="text-center">
-            <div className="text-3xl font-bold text-primary">150+</div>
-            <div className="text-sm text-muted-foreground mt-1">Publications</div>
-          </div>
-          <div className="text-center">
-            <div className="text-3xl font-bold text-primary">$5M+</div>
-            <div className="text-sm text-muted-foreground mt-1">Research Funding</div>
-          </div>
-          <div className="text-center">
-            <div className="text-3xl font-bold text-primary">12</div>
-            <div className="text-sm text-muted-foreground mt-1">Industry Partners</div>
-          </div>
+          {data.stats.map((stat) => (
+            <div key={stat.label} className="text-center">
+              <div className="text-3xl font-bold text-primary">{stat.value}</div>
+              <div className="text-sm text-muted-foreground mt-1">{stat.label}</div>
+            </div>
+          ))}
         </div>
       </div>
     </section>

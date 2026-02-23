@@ -4,18 +4,18 @@ import Link from "next/link"
 import { useState } from "react"
 import { Menu, X } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import type { HeaderContent } from "@/lib/content"
 
-const navLinks = [
-  { name: "About", href: "#about" },
-  { name: "Research", href: "#research" },
-  { name: "Team", href: "#team" },
-  { name: "Publications", href: "#publications" },
-  { name: "Facilities", href: "#facilities" },
-  { name: "Contact", href: "#contact" },
-]
+type HeaderProps = {
+  content: HeaderContent
+}
 
-export function Header() {
+export function Header({ content }: HeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const showAccent = content.brand.includes(content.brandAccent)
+  const brandRemainder = showAccent
+    ? content.brand.replace(content.brandAccent, "").trim()
+    : content.brand
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
@@ -23,7 +23,14 @@ export function Header() {
         <div className="flex lg:flex-1">
           <Link href="/" className="-m-1.5 p-1.5">
             <span className="text-xl font-bold tracking-tight text-foreground">
-              <span className="text-primary">ECE</span> Lab
+              {showAccent ? (
+                <>
+                  <span className="text-primary">{content.brandAccent}</span>{" "}
+                  {brandRemainder}
+                </>
+              ) : (
+                content.brand
+              )}
             </span>
           </Link>
         </div>
@@ -42,7 +49,7 @@ export function Header() {
           </Button>
         </div>
         <div className="hidden lg:flex lg:gap-x-8">
-          {navLinks.map((link) => (
+          {content.links.map((link) => (
             <Link
               key={link.name}
               href={link.href}
@@ -54,7 +61,7 @@ export function Header() {
         </div>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
           <Button variant="outline" size="sm">
-            Join Our Lab
+            {content.cta}
           </Button>
         </div>
       </nav>
@@ -63,7 +70,7 @@ export function Header() {
       {mobileMenuOpen && (
         <div className="lg:hidden">
           <div className="space-y-1 px-6 pb-4">
-            {navLinks.map((link) => (
+            {content.links.map((link) => (
               <Link
                 key={link.name}
                 href={link.href}
@@ -74,7 +81,7 @@ export function Header() {
               </Link>
             ))}
             <Button variant="outline" size="sm" className="mt-4 w-full bg-transparent">
-              Join Our Lab
+              {content.cta}
             </Button>
           </div>
         </div>

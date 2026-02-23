@@ -13,23 +13,20 @@ info:
   - icon: "MapPin"
     title: "Address"
     details:
-      - "Engineering Building, Room 301"
-      - "123 University Ave"
-      - "Tech City, TC 12345"
+      - "Barus and Holly Building, Room 313"
+      - "184 Hope Street"
+      - "Providence, RI 02912"
   - icon: "Mail"
     title: "Email"
     details:
-      - "ecelab@university.edu"
-      - "admissions@ecelab.edu"
+      - "mehdi_saligane@brown.edu"
   - icon: "Phone"
     title: "Phone"
     details:
       - "+1 (555) 123-4567"
-      - "+1 (555) 123-4568"
   - icon: "Clock"
     title: "Office Hours"
     details:
-      - "Monday - Friday: 9am - 5pm"
-      - "Saturday - Sunday: Closed"
+      - "Monday - Friday: 9am - 10am"
 description: >
   Interested in collaborating with us or joining our research team? We would love to hear from you.

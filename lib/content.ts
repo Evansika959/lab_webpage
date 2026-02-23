@@ -31,7 +31,7 @@ export type TeamContent = {
   eyebrow: string
   title: string
   description: string
-  members: {
+  pi: {
     name: string
     role: string
     specialty: string
@@ -39,6 +39,18 @@ export type TeamContent = {
     initials: string
     email?: string
     linkedin?: string
+  }
+  groups: {
+    title: string
+    members: {
+      name: string
+      role: string
+      specialty: string
+      image?: string
+      initials: string
+      email?: string
+      linkedin?: string
+    }[]
   }[]
 }
 

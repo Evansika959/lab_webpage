@@ -1,5 +1,5 @@
-brand: "ReaLLMASIC Lab"
-brandAccent: "LLM"
+brand: "ReaLLM of ASIC Lab"
+brandAccent: "ReaLLM"
 description: "Advancing the frontiers of electrical and computer engineering through innovative research and education."
 columns:
   - title: "Research"
@@ -8,7 +8,7 @@ columns:
         href: "#"
       - name: "Signal Processing"
         href: "#"
-      - name: "ML Hardware"
+      - name: "ML/LLM Hardware"
         href: "#"
       - name: "Power Electronics"
         href: "#"

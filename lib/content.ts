@@ -66,6 +66,9 @@ export type PublicationsContent = {
     year: string
     type: string
     url?: string
+    summary?: string
+    thumbnail?: string
+    links?: { label: string; href: string }[]
   }[]
 }
 

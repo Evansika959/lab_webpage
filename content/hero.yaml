@@ -8,8 +8,6 @@ stats:
     label: "Active Researchers"
   - value: "30+"
     label: "Publications"
-  - value: "$5M+"
-    label: "Research Funding"
   - value: "5"
     label: "Industry Partners"
 description: >

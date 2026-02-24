@@ -1,16 +1,14 @@
-import { Header } from "@/components/header"
-import { HeroSection } from "@/components/hero-section"
-import { ResearchSection } from "@/components/research-section"
 import { Footer } from "@/components/footer"
+import { Header } from "@/components/header"
+import { ResearchSection } from "@/components/research-section"
 import { getPageContent } from "@/lib/content"
 
-export default async function Home() {
+export default async function ResearchPage() {
   const content = await getPageContent()
 
   return (
     <main className="min-h-screen bg-background">
       <Header content={content.header.data} />
-      <HeroSection content={content.hero} />
       <ResearchSection content={content.research} />
       <Footer content={content.footer.data} />
     </main>

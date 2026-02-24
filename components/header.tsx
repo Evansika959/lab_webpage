@@ -21,7 +21,12 @@ export function Header({ content }: HeaderProps) {
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
       <nav className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-8">
         <div className="flex lg:flex-1">
-          <Link href="/" className="-m-1.5 p-1.5">
+          <Link href="/" className="-m-1.5 p-1.5 flex items-center gap-3">
+            <img
+              src="/images/lab_logo.png"
+              alt="ReaLLM of ASIC Lab logo"
+              className="h-10 w-auto"
+            />
             <span className="text-xl font-bold tracking-tight text-foreground">
               {showAccent ? (
                 <>

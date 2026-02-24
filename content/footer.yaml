@@ -15,9 +15,9 @@ columns:
   - title: "Resources"
     links:
       - name: "Publications"
-        href: "#publications"
+        href: "/publications"
       - name: "Facilities"
-        href: "#facilities"
+        href: "/facilities"
       - name: "Open Positions"
         href: "#"
       - name: "News & Events"
@@ -25,7 +25,7 @@ columns:
   - title: "Connect"
     links:
       - name: "Contact Us"
-        href: "#contact"
+        href: "/contact"
       - name: "Industry Partners"
         href: "#"
       - name: "Alumni Network"

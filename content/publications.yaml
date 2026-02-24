@@ -15,7 +15,7 @@ items:
         href: "#"
       - label: "Project Page"
         href: "#"
-  - title: "Transformer Accelerator in 16nm"
+  - title: "A 11.16μJ/token Edge LLM Accelerator with Scalable Ring-based Configuration for Token-wise Pipelining  in 16nm FinFET"
     authors: "G. Tao, J. Luo, M. Saligane"
     venue: "IEEE Custom Integrated Circuits Conference"
     year: "2026"

@@ -45,6 +45,7 @@ export type TeamContent = {
     members: {
       name: string
       role: string
+      started?: string
       specialty: string
       image?: string
       initials: string

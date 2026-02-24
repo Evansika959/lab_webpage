@@ -106,6 +106,11 @@ export function TeamSection({ content }: TeamSectionProps) {
                         <CardTitle className="text-foreground">{member.name}</CardTitle>
                         <CardDescription className="text-primary font-medium">
                           {member.role}
+                          {member.started ? (
+                            <span className="block text-xs text-muted-foreground mt-1">
+                              Started {member.started}
+                            </span>
+                          ) : null}
                         </CardDescription>
                       </CardHeader>
                       <CardContent className="text-center">

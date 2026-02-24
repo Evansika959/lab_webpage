@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Markdown } from "@/components/markdown"
 import type { PublicationsContent, SectionContent } from "@/lib/content"
-import { ExternalLink, FileText, Minus, Plus } from "lucide-react"
+import { ExternalLink, FileText, Plus } from "lucide-react"
 import Link from "next/link"
 import { useState } from "react"
 
@@ -61,28 +61,16 @@ export function PublicationsSection({ content }: PublicationsSectionProps) {
                       {pub.title}
                     </CardTitle>
                   </div>
-                  <div className="flex items-center gap-2">
-                    <Button variant="ghost" size="icon" className="shrink-0" asChild>
-                      <Link href={pub.url || "#"}>
-                        <ExternalLink className="h-4 w-4" />
-                        <span className="sr-only">View publication</span>
-                      </Link>
-                    </Button>
-                    <Button
-                      variant="outline"
-                      size="icon"
-                      className="shrink-0"
-                      onClick={() => toggleItem(index)}
-                      aria-expanded={openIndex === index}
-                      aria-label={`Toggle details for ${pub.title}`}
-                    >
-                      {openIndex === index ? (
-                        <Minus className="h-4 w-4" />
-                      ) : (
-                        <Plus className="h-4 w-4" />
-                      )}
-                    </Button>
-                  </div>
+                  <Button
+                    variant="outline"
+                    size="icon"
+                    className="shrink-0"
+                    onClick={() => toggleItem(index)}
+                    aria-expanded={openIndex === index}
+                    aria-label={`Toggle details for ${pub.title}`}
+                  >
+                    <Plus className="h-4 w-4" />
+                  </Button>
                 </div>
               </CardHeader>
               <CardContent>

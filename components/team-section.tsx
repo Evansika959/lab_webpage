@@ -42,7 +42,9 @@ export function TeamSection({ content }: TeamSectionProps) {
           <Card className="group transition-all hover:border-primary/50 bg-card">
             <CardHeader className="text-center">
               <Avatar className="h-32 w-32 mx-auto mb-4">
-                <AvatarImage src={data.pi.image || "/placeholder.svg"} alt={data.pi.name} />
+                {data.pi.image ? (
+                  <AvatarImage src={data.pi.image} alt={data.pi.name} />
+                ) : null}
                 <AvatarFallback className="bg-primary/10 text-primary text-xl">
                   {data.pi.initials}
                 </AvatarFallback>
@@ -95,10 +97,9 @@ export function TeamSection({ content }: TeamSectionProps) {
                     >
                       <CardHeader className="text-center">
                         <Avatar className="h-24 w-24 mx-auto mb-4">
-                          <AvatarImage
-                            src={member.image || "/placeholder.svg"}
-                            alt={member.name}
-                          />
+                          {member.image ? (
+                            <AvatarImage src={member.image} alt={member.name} />
+                          ) : null}
                           <AvatarFallback className="bg-primary/10 text-primary text-lg">
                             {member.initials}
                           </AvatarFallback>

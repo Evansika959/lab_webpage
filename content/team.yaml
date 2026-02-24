@@ -30,7 +30,7 @@ groups:
       - name: "Guanchen Tao"
         role: "PhD Candidate"
         started: "2024"
-        specialty: "place holder for Guanchen's specialty"
+        specialty: "Cryogenic Circuits, Quantum Error Correction, Edge AI Acceleration, Hardware & Software co-design"
         image: "/images/team/guanchen_photo.webp"
         initials: "GT"
         email: "guanchen@umich.edu"

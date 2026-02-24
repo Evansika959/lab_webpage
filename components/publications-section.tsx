@@ -3,9 +3,10 @@
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Dialog, DialogContent } from "@/components/ui/dialog"
 import { Markdown } from "@/components/markdown"
 import type { PublicationsContent, SectionContent } from "@/lib/content"
-import { ExternalLink, FileText, Plus } from "lucide-react"
+import { ExternalLink, FileText, Minus, Plus } from "lucide-react"
 import Link from "next/link"
 import { useState } from "react"
 
@@ -16,6 +17,9 @@ type PublicationsSectionProps = {
 export function PublicationsSection({ content }: PublicationsSectionProps) {
   const { data, html } = content
   const [openIndex, setOpenIndex] = useState<number | null>(null)
+  const [activeImage, setActiveImage] = useState<{ src: string; title: string } | null>(
+    null,
+  )
 
   const toggleItem = (index: number) => {
     setOpenIndex((current) => (current === index ? null : index))
@@ -69,7 +73,11 @@ export function PublicationsSection({ content }: PublicationsSectionProps) {
                     aria-expanded={openIndex === index}
                     aria-label={`Toggle details for ${pub.title}`}
                   >
-                    <Plus className="h-4 w-4" />
+                    {openIndex === index ? (
+                      <Minus className="h-4 w-4" />
+                    ) : (
+                      <Plus className="h-4 w-4" />
+                    )}
                   </Button>
                 </div>
               </CardHeader>
@@ -86,7 +94,10 @@ export function PublicationsSection({ content }: PublicationsSectionProps) {
                       <img
                         src={pub.thumbnail}
                         alt={`${pub.title} thumbnail`}
-                        className="w-full max-w-[200px] rounded-md border border-border object-cover"
+                        className="w-full aspect-[10/3] rounded-md border border-border object-contain bg-background cursor-zoom-in"
+                        onClick={() =>
+                          setActiveImage({ src: pub.thumbnail as string, title: pub.title })
+                        }
                       />
                     )}
                     <div className="space-y-4">
@@ -128,6 +139,18 @@ export function PublicationsSection({ content }: PublicationsSectionProps) {
           </Button>
         </div>
       </div>
+
+      <Dialog open={!!activeImage} onOpenChange={(open) => !open && setActiveImage(null)}>
+        <DialogContent className="max-w-5xl">
+          {activeImage && (
+            <img
+              src={activeImage.src}
+              alt={activeImage.title}
+              className="w-full max-h-[80vh] object-contain"
+            />
+          )}
+        </DialogContent>
+      </Dialog>
     </section>
   )
 }

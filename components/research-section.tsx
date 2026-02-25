@@ -1,7 +1,9 @@
+import Link from "next/link"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Markdown } from "@/components/markdown"
 import type { ResearchContent, SectionContent } from "@/lib/content"
+import { slugify } from "@/lib/utils"
 import { Activity, BrainCircuit, CircuitBoard, Cpu, Database, Dna, Shield, Sparkles } from "lucide-react"
 
 const iconMap = { Activity, BrainCircuit, CircuitBoard, Cpu, Database, Dna, Shield, Sparkles }
@@ -12,6 +14,10 @@ type ResearchSectionProps = {
 
 export function ResearchSection({ content }: ResearchSectionProps) {
   const { data, html } = content
+  const areas = data.areas.map((area) => ({
+    ...area,
+    slug: slugify(area.title),
+  }))
 
   return (
     <section id="research" className="py-24">
@@ -29,41 +35,44 @@ export function ResearchSection({ content }: ResearchSectionProps) {
           />
         </div>
 
-        <div className="mt-16 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {data.areas.map((area) => {
+        <div className="mt-16 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 auto-rows-fr">
+          {areas.map((area) => {
             const Icon = iconMap[area.icon as keyof typeof iconMap] ?? Cpu
 
             return (
-              <Card
+              <Link
                 key={area.title}
-                className="group transition-all hover:border-primary/50 bg-card"
+                href={`/research/${area.slug}`}
+                className="group h-full"
               >
-                <CardHeader>
-                  <div className="flex items-center gap-3 mb-4">
-                    <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors">
-                      <Icon className="h-6 w-6 text-primary" />
+                <Card className="h-full transition-all hover:-translate-y-1 hover:border-primary/50 bg-card">
+                  <CardHeader className="flex h-full flex-col">
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors">
+                        <Icon className="h-6 w-6 text-primary" />
+                      </div>
+                      {area.catchPhrase ? (
+                        <span className="text-xs font-semibold uppercase tracking-[0.18em] text-primary bg-primary/10 px-3 py-1 rounded-full">
+                          {area.catchPhrase}
+                        </span>
+                      ) : null}
                     </div>
-                    {area.catchPhrase ? (
-                      <span className="text-xs font-semibold uppercase tracking-[0.18em] text-primary bg-primary/10 px-3 py-1 rounded-full">
-                        {area.catchPhrase}
-                      </span>
-                    ) : null}
-                  </div>
-                  <CardTitle className="text-foreground">{area.title}</CardTitle>
-                  <CardDescription className="text-muted-foreground leading-relaxed">
-                    {area.description}
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="flex flex-wrap gap-2">
-                    {area.tags.map((tag) => (
-                      <Badge key={tag} variant="secondary" className="text-xs">
-                        {tag}
-                      </Badge>
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
+                    <CardTitle className="text-foreground">{area.title}</CardTitle>
+                    <CardDescription className="text-muted-foreground leading-relaxed">
+                      {area.description}
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent className="mt-auto">
+                    <div className="flex flex-wrap gap-2">
+                      {area.tags.map((tag) => (
+                        <Badge key={tag} variant="secondary" className="text-xs">
+                          {tag}
+                        </Badge>
+                      ))}
+                    </div>
+                  </CardContent>
+                </Card>
+              </Link>
             )
           })}
         </div>

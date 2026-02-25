@@ -5,7 +5,7 @@ areas:
     title: "Edge AI/LLM Systems Co-Design"
     catchPhrase: "Circuits for AI"
     description: "Energy-efficient accelerators and HW/SW co-design for edge AI and LLM inference under tight power, latency, and area constraints."
-    tags: ["Accelerators", "Co-Design", "LLM Inference", "SoC"]
+    tags: ["Accelerators", "Co-Design", "LLM Inference"]
   - icon: "Sparkles"
     title: "AI-Powered EDA & Circuit Exploration"
     catchPhrase: "AI for Circuits"
@@ -24,7 +24,7 @@ areas:
   - icon: "CircuitBoard"
     title: "Quantum & Cryogenic Circuits"
     catchPhrase: "Cryo-Ready"
-    description: "Circuit design for quantum systems and cryogenic environments, including control and readout."
+    description: "Cryogenic CMOS quantum error correction (QEC) co-processor for superconducting quantum chips."
     tags: ["Cryogenic", "Qubit Control", "Readout"]
   - icon: "Shield"
     title: "Hardware Security"

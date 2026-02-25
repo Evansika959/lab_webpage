@@ -2,6 +2,7 @@ import fs from "node:fs/promises"
 import path from "node:path"
 import { marked } from "marked"
 import YAML from "yaml"
+import { slugify } from "@/lib/utils"
 
 export type HeroContent = {
   titleHighlight: string
@@ -30,6 +31,13 @@ export type ResearchContent = {
     description: string
     tags: string[]
   }[]
+}
+
+export type ResearchDetail = {
+  slug: string
+  area: ResearchContent["areas"][number]
+  html: string
+  raw: string
 }
 
 export type TeamContent = {
@@ -116,7 +124,7 @@ export type HeaderContent = {
   brand: string
   brandAccent: string
   cta: string
-  links: { name: string; href: string }[]
+  links: { name: string; href: string; children?: { name: string; href: string }[] }[]
 }
 
 export type FooterContent = {
@@ -180,5 +188,40 @@ export async function getPageContent() {
     news,
     contact,
     footer,
+  }
+}
+
+export async function getResearchSlugs() {
+  const research = await readYaml<ResearchContent>("research")
+  return research.data.areas.map((area) => slugify(area.title))
+}
+
+export async function getResearchDetail(slug: string): Promise<ResearchDetail | null> {
+  const research = await readYaml<ResearchContent>("research")
+  const area = research.data.areas.find((item) => slugify(item.title) === slug)
+
+  if (!area) {
+    return null
+  }
+
+  const filePath = path.join(contentDir, "research", `${slug}.md`)
+  let raw = ""
+
+  try {
+    raw = await fs.readFile(filePath, "utf8")
+  } catch (error) {
+    const err = error as NodeJS.ErrnoException
+    if (err.code !== "ENOENT") {
+      throw error
+    }
+  }
+
+  const html = raw.trim() ? await marked.parse(raw) : ""
+
+  return {
+    slug,
+    area,
+    html,
+    raw,
   }
 }

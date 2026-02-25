@@ -2,9 +2,9 @@ import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Markdown } from "@/components/markdown"
 import type { ResearchContent, SectionContent } from "@/lib/content"
-import { Activity, BrainCircuit, CircuitBoard, Cpu, Database, Shield, Sparkles } from "lucide-react"
+import { Activity, BrainCircuit, CircuitBoard, Cpu, Database, Dna, Shield, Sparkles } from "lucide-react"
 
-const iconMap = { Activity, BrainCircuit, CircuitBoard, Cpu, Database, Shield, Sparkles }
+const iconMap = { Activity, BrainCircuit, CircuitBoard, Cpu, Database, Dna, Shield, Sparkles }
 
 type ResearchSectionProps = {
   content: SectionContent<ResearchContent>

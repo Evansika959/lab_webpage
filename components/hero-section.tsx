@@ -1,7 +1,8 @@
 import { Button } from "@/components/ui/button"
 import { Markdown } from "@/components/markdown"
-import { ArrowRight, Cpu, Zap, CircuitBoard } from "lucide-react"
+import { ArrowRight, Github } from "lucide-react"
 import type { HeroContent, SectionContent } from "@/lib/content"
+import Link from "next/link"
 
 type HeroSectionProps = {
   content: SectionContent<HeroContent>
@@ -16,18 +17,6 @@ export function HeroSection({ content }: HeroSectionProps) {
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#1a1a2e_1px,transparent_1px),linear-gradient(to_bottom,#1a1a2e_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_110%)]" />
       
       <div className="relative z-10 mx-auto max-w-7xl px-6 lg:px-8 text-center">
-        <div className="flex justify-center gap-4 mb-8">
-          <div className="p-3 rounded-lg bg-secondary/50 border border-border">
-            <Cpu className="h-6 w-6 text-primary" />
-          </div>
-          <div className="p-3 rounded-lg bg-secondary/50 border border-border">
-            <Zap className="h-6 w-6 text-primary" />
-          </div>
-          <div className="p-3 rounded-lg bg-secondary/50 border border-border">
-            <CircuitBoard className="h-6 w-6 text-primary" />
-          </div>
-        </div>
-
         <h1 className="text-4xl font-bold tracking-tight text-foreground sm:text-6xl lg:text-7xl text-balance">
           <span className="text-primary">{data.titleHighlight}</span> {data.titleLineOne}
           <br />
@@ -40,23 +29,27 @@ export function HeroSection({ content }: HeroSectionProps) {
         />
         
         <div className="mt-10 flex items-center justify-center gap-4 flex-wrap">
-          <Button size="lg" className="gap-2">
-            {data.primaryButton}
-            <ArrowRight className="h-4 w-4" />
+          <Button size="lg" className="gap-2" asChild>
+            <Link href="/research">
+              {data.primaryButton}
+              <ArrowRight className="h-4 w-4" />
+            </Link>
           </Button>
-          <Button variant="outline" size="lg">
-            {data.secondaryButton}
+          <Button variant="outline" size="lg" asChild>
+            <Link href="/publications">{data.secondaryButton}</Link>
           </Button>
         </div>
-
-        {/* Stats */}
-        <div className="mt-20 grid grid-cols-2 gap-8 sm:grid-cols-4 max-w-3xl mx-auto">
-          {data.stats.map((stat) => (
-            <div key={stat.label} className="text-center">
-              <div className="text-3xl font-bold text-primary">{stat.value}</div>
-              <div className="text-sm text-muted-foreground mt-1">{stat.label}</div>
-            </div>
-          ))}
+        <div className="mt-4 flex items-center justify-center">
+          <Button
+            size="lg"
+            className="gap-2 bg-[#24292f] text-white hover:bg-[#1f2328]"
+            asChild
+          >
+            <Link href="https://github.com/ReaLLMASIC" target="_blank" rel="noreferrer">
+              <Github className="h-4 w-4" />
+              Check Our Group Repo
+            </Link>
+          </Button>
         </div>
       </div>
     </section>

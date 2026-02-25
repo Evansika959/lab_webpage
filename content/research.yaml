@@ -10,22 +10,22 @@ areas:
     title: "AI-Powered EDA & Circuit Exploration"
     catchPhrase: "AI for Circuits"
     description: "LLM-assisted analog layout and self-exploration methods (EA/RL) to discover and optimize novel circuit topologies automatically."
-    tags: ["LLM", "Analog Layout", "EA", "RL"]
-  - icon: "Database"
-    title: "Low-Power Circuits"
-    catchPhrase: "Energy First"
-    description: "Low-power analog and digital circuit design, including memory, power-aware architectures, and energy-efficient building blocks."
-    tags: ["Low Power", "Memory", "Analog", "Digital"]
+    tags: ["LLM", "Analog Layout", "GA", "RL"]
   - icon: "Activity"
     title: "Biomedical Sensing"
     catchPhrase: "Signals for Health"
     description: "Wearable sensors and signal processing for robust biomedical monitoring and diagnostics."
     tags: ["Biosignals", "Wearables", "DSP", "Health"]
+  - icon: "Dna"
+    title: "Molecular Synthesis, Sensing and Sequencing"
+    catchPhrase: "CMOS for Life Science"
+    description: "CMOS platforms for molecular synthesis, sensing, and sequencing, enabling scalable life-science assays and biointerfaces."
+    tags: ["CMOS Bio", "Sequencing", "Sensing", "Assays"]
   - icon: "CircuitBoard"
     title: "Quantum & Cryogenic Circuits"
     catchPhrase: "Cryo-Ready"
     description: "Circuit design for quantum systems and cryogenic environments, including control and readout."
-    tags: ["Cryogenic", "Qubit Control", "Readout", "RF"]
+    tags: ["Cryogenic", "Qubit Control", "Readout"]
   - icon: "Shield"
     title: "Hardware Security"
     catchPhrase: "Trust by Design"

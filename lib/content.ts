@@ -10,7 +10,6 @@ export type HeroContent = {
   primaryButton: string
   secondaryButton: string
   description: string
-  stats: { value: string; label: string }[]
 }
 
 export type AboutContent = {
@@ -119,8 +118,7 @@ export type HeaderContent = {
 export type FooterContent = {
   brand: string
   brandAccent: string
-  description: string
-  columns: { title: string; links: { name: string; href: string }[] }[]
+  logoPath?: string
   social: { name: string; href: string; icon: string }[]
 }
 

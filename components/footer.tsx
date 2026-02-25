@@ -47,6 +47,13 @@ export function Footer({ content }: FooterProps) {
             <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
               {content.fundingNote}
             </p>
+            {content.fundingImage ? (
+              <img
+                src={content.fundingImage}
+                alt="Funding partners"
+                className="mt-6 w-full max-w-3xl mx-auto object-contain opacity-100"
+              />
+            ) : null}
           </div>
         ) : null}
 

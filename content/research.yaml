@@ -9,7 +9,7 @@ areas:
   - icon: "Sparkles"
     title: "AI-Powered EDA & Circuit Exploration"
     catchPhrase: "AI for Circuits"
-    description: "LLM-assisted analog layout and self-exploration methods (EA/RL) to discover and optimize novel circuit topologies automatically."
+    description: "LLM-assisted analog layout and self-exploration methods to discover and optimize novel circuit topologies automatically."
     tags: ["LLM", "Analog Layout", "GA", "RL"]
   - icon: "Activity"
     title: "Biomedical Sensing"

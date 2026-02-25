@@ -126,6 +126,7 @@ export type FooterContent = {
   social: { name: string; href: string; icon: string }[]
   fundingTitle?: string
   fundingNote?: string
+  fundingImage?: string
 }
 
 export type SectionContent<T> = {

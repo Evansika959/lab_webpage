@@ -30,7 +30,7 @@ export function HeroSection({ content }: HeroSectionProps) {
         
         <div className="mt-10 flex items-center justify-center gap-4 flex-wrap">
           <Button size="lg" className="gap-2" asChild>
-            <Link href="/research">
+            <Link href="#research">
               {data.primaryButton}
               <ArrowRight className="h-4 w-4" />
             </Link>

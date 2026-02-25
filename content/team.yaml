@@ -69,6 +69,14 @@ groups:
         initials: "MC"
         email: "mingxin_chu@brown.edu"
         linkedin: "#"
+  - title: "Visiting Scholars"
+    members:
+      - name: "Juan Sebastian Moya"
+        role: "Visiting Scholar"
+        introduction: "Juan Sebastián Moya Baquero received his bachelor's degree in Electronics Engineering at Universidad de Los Andes (Colombia), then he was part of the CI Brazil Program between 2012 and 2014, and subsequently, he received his M.S. degree in Electrical Engineering at Universidade Federal de Santa Catarina (Brazil). In 2023, he got his Ph.D. in Engineering, in the Electronics Engineering area, at the Universidad Industrial de Santander (Colombia). His research interests include analog and RF circuit design, and he is currently working on body coupling communication modeling and circuit design as an exchange visitor."
+        initials: "JSM"
+        email: "#"
+        linkedin: "#"
   - title: "Alumni"
     members:
       - name: "Stroke Song"

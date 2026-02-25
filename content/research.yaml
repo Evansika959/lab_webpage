@@ -17,7 +17,7 @@ areas:
     description: "Low-power analog and digital circuit design, including memory, power-aware architectures, and energy-efficient building blocks."
     tags: ["Low Power", "Memory", "Analog", "Digital"]
   - icon: "Activity"
-    title: "Biomedical Sensing & Signal Processing"
+    title: "Biomedical Sensing"
     catchPhrase: "Signals for Health"
     description: "Wearable sensors and signal processing for robust biomedical monitoring and diagnostics."
     tags: ["Biosignals", "Wearables", "DSP", "Health"]

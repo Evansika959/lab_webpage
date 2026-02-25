@@ -1,0 +1,15 @@
+eyebrow: "News & Talks"
+title: "Updates from the Lab"
+description: >
+  Follow our latest milestones, awards, and invited talks. We share short updates
+  as soon as results are ready for the community.
+items:
+  - title: "Sample News Item: SSCS PICO Chronicles"
+    date: "Nov, 2024"
+    category: "News"
+    summary: >
+      SSCS PICO Chronicles: SSCS PICO Chronicles: News From the Open Source Community.
+    # location: "Tokyo, Japan"
+    link:
+      label: "Read more"
+      href: "https://ieeexplore.ieee.org/abstract/document/10584346"

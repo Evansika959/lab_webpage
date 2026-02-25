@@ -44,6 +44,7 @@ export type TeamContent = {
     initials: string
     email?: string
     linkedin?: string
+    moreInfoUrl?: string
   }
   groups: {
     title: string
@@ -79,15 +80,18 @@ export type PublicationsContent = {
   }[]
 }
 
-export type FacilitiesContent = {
+export type NewsContent = {
   eyebrow: string
   title: string
   description: string
   items: {
-    icon: string
     title: string
-    description: string
-    specs: string[]
+    date: string
+    category: string
+    summary: string
+    location?: string
+    speaker?: string
+    link?: { label: string; href: string }
   }[]
 }
 
@@ -120,6 +124,8 @@ export type FooterContent = {
   brandAccent: string
   logoPath?: string
   social: { name: string; href: string; icon: string }[]
+  fundingTitle?: string
+  fundingNote?: string
 }
 
 export type SectionContent<T> = {
@@ -148,7 +154,7 @@ export async function getPageContent() {
     research,
     team,
     publications,
-    facilities,
+    news,
     contact,
     footer,
   ] = await Promise.all([
@@ -158,7 +164,7 @@ export async function getPageContent() {
     readYaml<ResearchContent>("research"),
     readYaml<TeamContent>("team"),
     readYaml<PublicationsContent>("publications"),
-    readYaml<FacilitiesContent>("facilities"),
+    readYaml<NewsContent>("news"),
     readYaml<ContactContent>("contact"),
     readYaml<FooterContent>("footer"),
   ])
@@ -170,7 +176,7 @@ export async function getPageContent() {
     research,
     team,
     publications,
-    facilities,
+    news,
     contact,
     footer,
   }

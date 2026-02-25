@@ -2,12 +2,13 @@ eyebrow: "Our Team"
 title: "Meet the Researchers"
 pi:
   name: "Mehdi Saligane"
-  role: "Principal Investigator"
-  specialty: "Applied machine learning for ASIC design and real-time hardware systems."
+  role: "Assistant Professor"
+  specialty: ""
   image: "/images/team/mehdi_photo.webp"
   initials: "MS"
   email: "#"
   linkedin: "#"
+  moreInfoUrl: "https://vivo.brown.edu/display/msaligan#"
 groups:
   - title: "PhD Students"
     members:

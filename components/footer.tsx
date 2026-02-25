@@ -37,28 +37,41 @@ export function Footer({ content }: FooterProps) {
               )}
             </span>
           </Link>
-          <div className="flex gap-4">
-            {content.social.map((link) => {
-              const Icon = iconMap[link.icon as keyof typeof iconMap] ?? Mail
-
-              return (
-                <Link
-                  key={link.name}
-                  href={link.href}
-                  className="text-muted-foreground hover:text-primary transition-colors"
-                >
-                  <Icon className="h-5 w-5" />
-                  <span className="sr-only">{link.name}</span>
-                </Link>
-              )
-            })}
-          </div>
         </div>
 
+        {content.fundingTitle && content.fundingNote ? (
+          <div className="mt-10">
+            <p className="text-sm font-semibold uppercase tracking-wide text-primary">
+              {content.fundingTitle}
+            </p>
+            <p className="mt-3 text-sm text-muted-foreground leading-relaxed">
+              {content.fundingNote}
+            </p>
+          </div>
+        ) : null}
+
         <div className="mt-12 border-t border-border pt-8">
-          <p className="text-center text-sm text-muted-foreground">
-            &copy; {new Date().getFullYear()} Advanced ECE Lab. All rights reserved.
-          </p>
+          <div className="flex flex-col items-center gap-4">
+            <div className="flex gap-4">
+              {content.social.map((link) => {
+                const Icon = iconMap[link.icon as keyof typeof iconMap] ?? Mail
+
+                return (
+                  <Link
+                    key={link.name}
+                    href={link.href}
+                    className="text-muted-foreground hover:text-primary transition-colors"
+                  >
+                    <Icon className="h-5 w-5" />
+                    <span className="sr-only">{link.name}</span>
+                  </Link>
+                )
+              })}
+            </div>
+            <p className="text-center text-sm text-muted-foreground">
+              &copy; {new Date().getFullYear()} Advanced ECE Lab. All rights reserved.
+            </p>
+          </div>
         </div>
       </div>
     </footer>

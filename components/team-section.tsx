@@ -48,45 +48,56 @@ export function TeamSection({ content }: TeamSectionProps) {
         </div>
 
         <div className="mt-16 grid grid-cols-1 gap-6">
-          <Card className="group transition-all hover:border-primary/50 bg-card">
-            <CardHeader className="text-center">
-              <Avatar className="h-32 w-32 mx-auto mb-4">
-                {data.pi.image ? (
-                  <AvatarImage src={data.pi.image} alt={data.pi.name} />
-                ) : null}
-                <AvatarFallback className="bg-primary/10 text-primary text-xl">
-                  {data.pi.initials}
-                </AvatarFallback>
-              </Avatar>
-              <CardTitle className="text-foreground text-2xl">
-                {data.pi.name}
-              </CardTitle>
-              <CardDescription className="text-primary font-medium">
-                {data.pi.role}
-              </CardDescription>
-            </CardHeader>
-            <CardContent className="text-center">
-              <p className="text-base text-muted-foreground mb-4 max-w-2xl mx-auto">
-                {data.pi.specialty}
-              </p>
-              <div className="flex justify-center gap-3">
-                <Link
-                  href={normalizeEmailLink(data.pi.email)}
-                  className="p-2 rounded-full bg-secondary hover:bg-primary/20 transition-colors"
-                >
-                  <Mail className="h-4 w-4 text-muted-foreground hover:text-primary" />
-                  <span className="sr-only">Email {data.pi.name}</span>
-                </Link>
-                <Link
-                  href={data.pi.linkedin || "#"}
-                  className="p-2 rounded-full bg-secondary hover:bg-primary/20 transition-colors"
-                >
-                  <Linkedin className="h-4 w-4 text-muted-foreground hover:text-primary" />
-                  <span className="sr-only">{data.pi.name} on LinkedIn</span>
-                </Link>
-              </div>
-            </CardContent>
-          </Card>
+          <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            <Card className="group transition-all hover:border-primary/50 bg-card">
+              <CardHeader className="text-center">
+                <Avatar className="h-24 w-24 mx-auto mb-4">
+                  {data.pi.image ? (
+                    <AvatarImage src={data.pi.image} alt={data.pi.name} />
+                  ) : null}
+                  <AvatarFallback className="bg-primary/10 text-primary text-lg">
+                    {data.pi.initials}
+                  </AvatarFallback>
+                </Avatar>
+                <CardTitle className="text-foreground">{data.pi.name}</CardTitle>
+                <CardDescription className="text-primary font-medium">
+                  {data.pi.role}
+                </CardDescription>
+              </CardHeader>
+              <CardContent className="text-center">
+                {data.pi.moreInfoUrl ? (
+                  <Link
+                    href={data.pi.moreInfoUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-sm text-muted-foreground underline underline-offset-4 hover:text-primary"
+                  >
+                    More Info
+                  </Link>
+                ) : (
+                  <p className="text-sm text-muted-foreground mb-4">
+                    {data.pi.specialty}
+                  </p>
+                )}
+                <div className="flex justify-center gap-3">
+                  <Link
+                    href={normalizeEmailLink(data.pi.email)}
+                    className="p-2 rounded-full bg-secondary hover:bg-primary/20 transition-colors"
+                  >
+                    <Mail className="h-4 w-4 text-muted-foreground hover:text-primary" />
+                    <span className="sr-only">Email {data.pi.name}</span>
+                  </Link>
+                  <Link
+                    href={data.pi.linkedin || "#"}
+                    className="p-2 rounded-full bg-secondary hover:bg-primary/20 transition-colors"
+                  >
+                    <Linkedin className="h-4 w-4 text-muted-foreground hover:text-primary" />
+                    <span className="sr-only">{data.pi.name} on LinkedIn</span>
+                  </Link>
+                </div>
+              </CardContent>
+            </Card>
+          </div>
 
           {data.groups.map((group) => {
             if (!group.members.length) {

@@ -1,8 +1,9 @@
 "use client"
 
 import Link from "next/link"
-import { useState } from "react"
-import { Menu, X } from "lucide-react"
+import { useEffect, useState } from "react"
+import { Menu, Moon, Sun, X } from "lucide-react"
+import { useTheme } from "next-themes"
 import { Button } from "@/components/ui/button"
 import type { HeaderContent } from "@/lib/content"
 
@@ -12,10 +13,23 @@ type HeaderProps = {
 
 export function Header({ content }: HeaderProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [mounted, setMounted] = useState(false)
+  const { theme, resolvedTheme, setTheme } = useTheme()
   const showAccent = content.brand.includes(content.brandAccent)
   const brandRemainder = showAccent
     ? content.brand.replace(content.brandAccent, "").trim()
     : content.brand
+  const isDark =
+    mounted && (theme === "dark" || (theme === "system" && resolvedTheme === "dark"))
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
+
+  const toggleTheme = () => {
+    if (!mounted) return
+    setTheme(isDark ? "light" : "dark")
+  }
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
@@ -65,8 +79,17 @@ export function Header({ content }: HeaderProps) {
           ))}
         </div>
         <div className="hidden lg:flex lg:flex-1 lg:justify-end">
-          <Button variant="outline" size="sm">
-            {content.cta}
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={toggleTheme}
+            aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
+          >
+            {isDark ? (
+              <Sun className="h-5 w-5 transition-transform duration-300 ease-out hover:rotate-12" />
+            ) : (
+              <Moon className="h-5 w-5 transition-transform duration-300 ease-out hover:-rotate-12" />
+            )}
           </Button>
         </div>
       </nav>
@@ -85,8 +108,18 @@ export function Header({ content }: HeaderProps) {
                 {link.name}
               </Link>
             ))}
-            <Button variant="outline" size="sm" className="mt-4 w-full bg-transparent">
-              {content.cta}
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={toggleTheme}
+              aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
+              className="mt-4"
+            >
+              {isDark ? (
+                <Sun className="h-5 w-5 transition-transform duration-300 ease-out hover:rotate-12" />
+              ) : (
+                <Moon className="h-5 w-5 transition-transform duration-300 ease-out hover:-rotate-12" />
+              )}
             </Button>
           </div>
         </div>

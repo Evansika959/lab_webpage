@@ -44,7 +44,7 @@ export function ResearchSection({ content }: ResearchSectionProps) {
                       <Icon className="h-6 w-6 text-primary" />
                     </div>
                     {area.catchPhrase ? (
-                      <span className="text-xs uppercase tracking-[0.2em] text-primary font-mono">
+                      <span className="text-xs font-semibold uppercase tracking-[0.18em] text-primary bg-primary/10 px-3 py-1 rounded-full">
                         {area.catchPhrase}
                       </span>
                     ) : null}

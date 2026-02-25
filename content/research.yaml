@@ -20,7 +20,7 @@ areas:
     title: "Molecular Synthesis, Sensing and Sequencing"
     catchPhrase: "CMOS for Life Science"
     description: "CMOS platforms for molecular synthesis, sensing, and sequencing, enabling scalable life-science assays and biointerfaces."
-    tags: ["CMOS Bio", "Sequencing", "Sensing", "Assays"]
+    tags: ["Bioelectronics", "Biosensor", "Sequencing"]
   - icon: "CircuitBoard"
     title: "Quantum & Cryogenic Circuits"
     catchPhrase: "Cryo-Ready"

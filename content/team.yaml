@@ -43,7 +43,7 @@ groups:
         image: "/images/team/junyi_photo.jpg"
         initials: "JL"
         email: "junyi_luo@brown.edu"
-        linkedin: "#"
+        linkedin: "https://www.linkedin.com/in/junyi-luo-875185277/"
       - name: "Ruichen Qi"
         role: "PhD Candidate"
         started: "2025"

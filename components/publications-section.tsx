@@ -3,10 +3,10 @@
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Dialog, DialogContent } from "@/components/ui/dialog"
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog"
 import { Markdown } from "@/components/markdown"
 import type { PublicationsContent, SectionContent } from "@/lib/content"
-import { ExternalLink, FileText, Minus, Plus } from "lucide-react"
+import { ExternalLink, FileText, Minus, Plus, ZoomIn, ZoomOut } from "lucide-react"
 import Link from "next/link"
 import { useState } from "react"
 
@@ -20,9 +20,61 @@ export function PublicationsSection({ content }: PublicationsSectionProps) {
   const [activeImage, setActiveImage] = useState<{ src: string; title: string } | null>(
     null,
   )
+  const [zoom, setZoom] = useState(1)
+  const [pan, setPan] = useState({ x: 0, y: 0 })
+  const [drag, setDrag] = useState<{
+    id: number
+    startX: number
+    startY: number
+    originX: number
+    originY: number
+  } | null>(null)
 
   const toggleItem = (index: number) => {
     setOpenIndex((current) => (current === index ? null : index))
+  }
+
+  const closeImage = () => {
+    setActiveImage(null)
+    setZoom(1)
+    setPan({ x: 0, y: 0 })
+  }
+
+  const zoomIn = () => setZoom((current) => Math.min(current + 0.2, 2.5))
+  const zoomOut = () =>
+    setZoom((current) => {
+      const next = Math.max(current - 0.2, 1)
+      if (next === 1) {
+        setPan({ x: 0, y: 0 })
+      }
+      return next
+    })
+
+  const handlePointerDown = (event: React.PointerEvent<HTMLDivElement>) => {
+    event.currentTarget.setPointerCapture(event.pointerId)
+    setDrag({
+      id: event.pointerId,
+      startX: event.clientX,
+      startY: event.clientY,
+      originX: pan.x,
+      originY: pan.y,
+    })
+  }
+
+  const handlePointerMove = (event: React.PointerEvent<HTMLDivElement>) => {
+    if (!drag || drag.id !== event.pointerId) {
+      return
+    }
+    const dx = event.clientX - drag.startX
+    const dy = event.clientY - drag.startY
+    setPan({ x: drag.originX + dx, y: drag.originY + dy })
+  }
+
+  const handlePointerUp = (event: React.PointerEvent<HTMLDivElement>) => {
+    if (drag && drag.id === event.pointerId) {
+      event.currentTarget.releasePointerCapture(event.pointerId)
+      setDrag(null)
+    }
   }
 
   return (
@@ -88,15 +140,21 @@ export function PublicationsSection({ content }: PublicationsSectionProps) {
                   <span className="italic">{pub.venue}</span>
                 </CardDescription>
 
-                {openIndex === index && (
-                  <div className="mt-6 border-t border-border pt-6 grid gap-6 lg:grid-cols-[160px,1fr]">
+                <div
+                  className={`overflow-hidden transition-all duration-300 ease-out ${
+                    openIndex === index ? "max-h-[600px] opacity-100 mt-6" : "max-h-0 opacity-0"
+                  }`}
+                >
+                  <div className="border-t border-border pt-6 grid gap-6 lg:grid-cols-[160px,1fr]">
                     {pub.thumbnail && (
                       <img
                         src={pub.thumbnail}
                         alt={`${pub.title} thumbnail`}
                         className="w-full aspect-[10/3] rounded-md border border-border object-contain bg-background cursor-zoom-in"
                         onClick={() =>
-                          setActiveImage({ src: pub.thumbnail as string, title: pub.title })
+                          (setActiveImage({ src: pub.thumbnail as string, title: pub.title }),
+                          setZoom(1),
+                          setPan({ x: 0, y: 0 }))
                         }
                       />
                     )}
@@ -126,7 +184,7 @@ export function PublicationsSection({ content }: PublicationsSectionProps) {
                       )}
                     </div>
                   </div>
-                )}
+                </div>
               </CardContent>
             </Card>
           ))}
@@ -140,14 +198,47 @@ export function PublicationsSection({ content }: PublicationsSectionProps) {
         </div>
       </div>
 
-      <Dialog open={!!activeImage} onOpenChange={(open) => !open && setActiveImage(null)}>
+      <Dialog open={!!activeImage} onOpenChange={(open) => !open && closeImage()}>
         <DialogContent className="max-w-5xl">
+          <DialogTitle className="sr-only">Publication image preview</DialogTitle>
           {activeImage && (
-            <img
-              src={activeImage.src}
-              alt={activeImage.title}
-              className="w-full max-h-[80vh] object-contain"
-            />
+            <div className="space-y-4">
+              <div className="flex items-center justify-end gap-2">
+                <Button
+                  variant="outline"
+                  size="icon"
+                  onClick={zoomOut}
+                  aria-label="Zoom out"
+                >
+                  <ZoomOut className="h-4 w-4" />
+                </Button>
+                <Button
+                  variant="outline"
+                  size="icon"
+                  onClick={zoomIn}
+                  aria-label="Zoom in"
+                >
+                  <ZoomIn className="h-4 w-4" />
+                </Button>
+              </div>
+              <div
+                className={`h-[80vh] w-[80vw] max-w-[80vw] mx-auto rounded-md border border-border bg-background overflow-hidden flex items-center justify-center ${
+                  drag ? "cursor-grabbing" : "cursor-grab"
+                }`}
+                onPointerDown={handlePointerDown}
+                onPointerMove={handlePointerMove}
+                onPointerUp={handlePointerUp}
+                onPointerCancel={handlePointerUp}
+              >
+                <img
+                  src={activeImage.src}
+                  alt={activeImage.title}
+                  className="max-h-full max-w-full object-contain transition-transform duration-200 select-none"
+                  style={{ transform: `translate(${pan.x}px, ${pan.y}px) scale(${zoom})` }}
+                  draggable={false}
+                />
+              </div>
+            </div>
           )}
         </DialogContent>
       </Dialog>

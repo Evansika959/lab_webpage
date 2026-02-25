@@ -2,9 +2,9 @@ import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Markdown } from "@/components/markdown"
 import type { ResearchContent, SectionContent } from "@/lib/content"
-import { Cpu, Radio, BrainCircuit, Battery, Wifi, Shield } from "lucide-react"
+import { Activity, BrainCircuit, CircuitBoard, Cpu, Database, Shield, Sparkles } from "lucide-react"
 
-const iconMap = { Cpu, Radio, BrainCircuit, Battery, Wifi, Shield }
+const iconMap = { Activity, BrainCircuit, CircuitBoard, Cpu, Database, Shield, Sparkles }
 
 type ResearchSectionProps = {
   content: SectionContent<ResearchContent>
@@ -39,8 +39,15 @@ export function ResearchSection({ content }: ResearchSectionProps) {
                 className="group transition-all hover:border-primary/50 bg-card"
               >
                 <CardHeader>
-                  <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 mb-4 group-hover:bg-primary/20 transition-colors">
-                    <Icon className="h-6 w-6 text-primary" />
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors">
+                      <Icon className="h-6 w-6 text-primary" />
+                    </div>
+                    {area.catchPhrase ? (
+                      <span className="text-xs uppercase tracking-[0.2em] text-primary font-mono">
+                        {area.catchPhrase}
+                      </span>
+                    ) : null}
                   </div>
                   <CardTitle className="text-foreground">{area.title}</CardTitle>
                   <CardDescription className="text-muted-foreground leading-relaxed">

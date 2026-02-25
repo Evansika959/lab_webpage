@@ -24,7 +24,13 @@ export type ResearchContent = {
   eyebrow: string
   title: string
   description: string
-  areas: { icon: string; title: string; description: string; tags: string[] }[]
+  areas: {
+    icon: string
+    title: string
+    catchPhrase?: string
+    description: string
+    tags: string[]
+  }[]
 }
 
 export type TeamContent = {

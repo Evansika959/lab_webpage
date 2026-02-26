@@ -37,6 +37,15 @@ items:
     links:
       - label: "Paper"
         href: "#"
+  - title: "Pinball: A Cryogenic Predecoder for Quantum Error Correction Decoding Under Circuit-Level Noise"
+    authors: "A. Knapen, G. Tao, J. Mack, T. Bruno, M. Saligane, D. Sylvester, Q. Zhang, G. Ravi"
+    venue: "IEEE International Symposium on High-Performance Computer Architecture (HPCA)"
+    year: "2026"
+    type: "Conference"
+    url: "#"
+    links:
+      - label: "Paper"
+        href: "#"
   - title: "FLARE: Finetuning ReLU With FIRE for Efficient Long-Context Inference"
     authors: "M. Moffatt, J. Luo, H. Cheng, Q. Wang, X. Jiang, G. Tao, S. Liu, K. Lei, G. Kielian, M. Saligane"
     venue: "Design, Automation and Test in Europe (DATE)"

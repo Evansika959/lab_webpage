@@ -1,11 +1,11 @@
-# Quantum & Cryogenic Circuits
+## Cryo-CMOS Classical Co-Processing for Scalable Fault-Tolerant Quantum Computing [1]
 
-Add your overview here. Describe the motivation, key challenges, and why this area matters.
+### Background
 
-## Projects
+![Alt text](/images/research/quantum/background.png)
 
-### Project Title
+### Cryo-CMOS QEC Pre-Decoding
 
-Write the project story, results, and impact. Add images using standard Markdown:
+![Alt text](/images/research/quantum/pre_decoding.png)
 
-![Alt text](/images/research/quantum/figure-1.jpg)
+[1] G. Tao et al., "CryoZip: An Efficient Cryogenic Compressor for Quantum Error Correction Syndromes", in Proceedings of the 62nd Annual ACM/IEEE Design Automation Conference (DAC) 2026.

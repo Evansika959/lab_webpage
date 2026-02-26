@@ -20,13 +20,5 @@ info:
     title: "Email"
     details:
       - "mehdi_saligane@brown.edu"
-  - icon: "Phone"
-    title: "Phone"
-    details:
-      - "+1 (555) 123-4567"
-  - icon: "Clock"
-    title: "Office Hours"
-    details:
-      - "Monday - Friday: 9am - 10am"
 description: >
   Interested in collaborating with us or joining our research team? We would love to hear from you.

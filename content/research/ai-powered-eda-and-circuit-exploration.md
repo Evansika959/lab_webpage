@@ -9,3 +9,15 @@
 * An open-source and autonomous temperature sensor in SkyWater 130 nm for comprehensive design space exploration. SSC-L’22.
 * The missing pieces of open design enablement: A recent history of Google efforts. ICCAD’20.
 Bridging academic open-source EDA to real-world usability. ICCAD’20.
+
+## Genetic Alogorithm for Unconventional Circuit Synthesis
+
+We use genetic algorithms to explore unconventional circuit designs across multiple topics, including approximate computing and transistor-level synthesis. By evolving candidate circuits with fitness functions that capture power, accuracy, and area, we can discover non-obvious topologies that traditional flows often miss. This approach lets us search large design spaces quickly while keeping targets and constraints explicit. 
+
+Here shows framework for using genetic algorithm to search for approximate compute circuits.
+
+![Alt text](/images/research/ai4circuit/circuitDNA_diagram.png)
+
+
+
+

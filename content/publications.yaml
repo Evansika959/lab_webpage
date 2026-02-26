@@ -1,5 +1,5 @@
-eyebrow: "Publications"
-title: "Recent Research Output"
+eyebrow: ""
+title: "Publications"
 buttonLabel: "View All Publications"
 items:
   - title: "A 16nm 2.2pJ/b High Efficiency Pulse-Position Modulated Resonance Transceiver for 15Mbps Multi-Source High-Speed Body-Area Sensor Network"
@@ -13,7 +13,7 @@ items:
     links:
       - label: "Paper"
         href: "#"
-  - title: "A 11.16μJ/token Edge LLM Accelerator with Scalable Ring-based Configuration for Token-wise Pipelining  in 16nm FinFET"
+  - title: "A 11.16μJ/token Edge LLM Accelerator with Scalable Ring-based Configuration for Token-wise Pipelining in 16nm FinFET"
     authors: "G. Tao*, J. Luo*, S. Liu, A. Li, G. Kielian, K. Lei, Q. Zhang, D. Sylvester, M. Saligane"
     venue: "IEEE Custom Integrated Circuits Conference (CICC)"
     year: "2026"
@@ -113,4 +113,4 @@ items:
         href: "https://dl.acm.org/doi/abs/10.1145/3670474.3685971"
   
 description: >
-  Our research is published in top-tier journals and conferences. Here are some of our recent publications.
+

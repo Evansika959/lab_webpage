@@ -1,4 +1,8 @@
+"use client"
+
 import Link from "next/link"
+import { useRouter } from "next/navigation"
+import { useCallback } from "react"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Markdown } from "@/components/markdown"
@@ -14,10 +18,38 @@ type ResearchSectionProps = {
 
 export function ResearchSection({ content }: ResearchSectionProps) {
   const { data, html } = content
+  const router = useRouter()
   const areas = data.areas.map((area) => ({
     ...area,
     slug: slugify(area.title),
   }))
+
+  const handleNavigate = useCallback(
+    (href: string) => (event: React.MouseEvent<HTMLAnchorElement>) => {
+      if (
+        event.defaultPrevented ||
+        event.button !== 0 ||
+        event.metaKey ||
+        event.altKey ||
+        event.ctrlKey ||
+        event.shiftKey
+      ) {
+        return
+      }
+
+      event.preventDefault()
+      const doc = document as Document & {
+        startViewTransition?: (callback: () => void) => void
+      }
+
+      if (doc.startViewTransition) {
+        doc.startViewTransition(() => router.push(href))
+      } else {
+        router.push(href)
+      }
+    },
+    [router],
+  )
 
   return (
     <section id="research" className="py-24">
@@ -44,6 +76,7 @@ export function ResearchSection({ content }: ResearchSectionProps) {
                 key={area.title}
                 href={`/research/${area.slug}`}
                 className="group h-full"
+                onClick={handleNavigate(`/research/${area.slug}`)}
               >
                 <Card className="h-full transition-all hover:-translate-y-1 hover:border-primary/50 bg-card">
                   <CardHeader className="flex h-full flex-col">

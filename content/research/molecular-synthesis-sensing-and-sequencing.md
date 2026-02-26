@@ -1,11 +1,5 @@
-# Molecular Synthesis, Sensing and Sequencing
+## SecSenSyn: CMOS Integration of In-situ DNA Probe Synthesis and Electrode-level Obfuscated Biosensing for Secure Multi-Analyte Diagnostics
 
-Add your overview here. Describe the motivation, key challenges, and why this area matters.
+We present a CMOS chip with an integrated microelectrode array (MEA) designed to support in-situ electrochemical DNA probe synthesis and electrode-level obfuscated biosensing for secure multi-analyte diagnostic applications.
 
-## Projects
-
-### Project Title
-
-Write the project story, results, and impact. Add images using standard Markdown:
-
-![Alt text](/images/research/molecular/figure-1.jpg)
+![Alt text](/images/research/dnasyn/dna_probe.png)

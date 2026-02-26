@@ -76,7 +76,7 @@ export function Footer({ content }: FooterProps) {
               })}
             </div>
             <p className="text-center text-sm text-muted-foreground">
-              &copy; {new Date().getFullYear()} Advanced ECE Lab. All rights reserved.
+              &copy; {new Date().getFullYear()} {content.brand}. All rights reserved.
             </p>
           </div>
         </div>

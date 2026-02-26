@@ -1,15 +1,22 @@
-# Edge AI/LLM Systems Co-Design
+## EdgeLLM Transformer Accelerator (Published@CICC'26)
 
-Add your overview here. Describe the motivation, key challenges, and why this area matters.
+Large language models (LLM) have permeated many aspects of our lives. Edge deployment has attracted strong interest from industry, driven by benefits in privacy, reliability, and cost. However, there are three main challenges.
 
-## Projects
+* EMA-Limited Prefill and Decode Efficiency
+* Bottlenecks in Multi-Request Inference
+* Underutilization from Non-MAC Operations
 
-### Project Title
+We design a rDXE (ring-based Decoder eXecution Engine) system to tackle these challenges.
 
-Write the project story, results, and impact. Add images using standard Markdown:
+![Alt text](/images/research/circuit4ai/rDXE.png)
 
-![Alt text](/images/research/edge-ai-llm/figure-1.jpg)
+Our tapeout in Intel 16nm.
 
-### Another Project
+![Alt text](/images/research/circuit4ai/edgellm_chip.png)
 
-More details here.
+## Transformer SW-HW Co-Exploration
+
+We co-explore edge Transformer architectures and a custom systolic-array accelerator to balance accuracy, time-to-first-token, energy, and area. For each candidate design, we map model parameters onto hardware configurations and evaluate performance, timing, power, and area with an analytic loop and OpenROAD. The resulting design space highlights trade-offs between speed, efficiency, and area to guide practical choices.
+
+![Alt text](/images/research/circuit4ai/sw_hw_coop.png)
+

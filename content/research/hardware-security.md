@@ -1,4 +1,4 @@
-# Open Socure Root of Trust System Hardware [1]
+## Open Socure Root of Trust System Hardware [1]
 
 Open Se Cura is built upon an open-source HRoT project called OpenTitan, and it offers several key_contributions:
 

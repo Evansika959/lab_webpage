@@ -8,3 +8,14 @@ We present the integration of the Laser-Induced-Graphene (LIG) sensors and the A
 
 [2] A. Li et al., "Rapid Prototyping of Laser-Induced Graphene Sensors With Open-Source Silicon: Paving the Way for Low-Cost and Robust Flexible Wearable Sensing," in IEEE Solid-State Circuits Magazine, vol. 16, no. 2, pp. 49-57, Spring 2024, doi: 10.1109/MSSC.2024.3380586.
 
+## Human-Body Communication (HBC) [3]
+
+HBC systems use the human body as a conductive medium to transmit data between wearable or implantable devices, reducing radiated energy and improving privacy. A typical HBC link includes body-coupled transmitters and receivers that modulate signals through electrodes and measure the resulting potential differences across the body.
+
+![Alt text](/images/research/biosensor/hbc_intro.png)
+
+Propose Inductive Resonance Transmitter & Pulse-Position Modulation. Taped out in 16nm technology. Achieved SoTA efficiency (0.85pJ/b) and standby power (200nW).
+
+![Alt text](/images/research/biosensor/hbc_chip.png)
+
+[3] A. Li et al., "A 16nm 2.2pJ/b High Efficiency Pulse-Position Modulated Resonance Transceiver for 15Mbps Multi-Source High-Speed Body-Area Sensor Network," in IEEE Custom Integrated Circuits Conference (CICC) 2026.

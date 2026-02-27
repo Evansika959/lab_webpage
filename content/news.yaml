@@ -26,6 +26,7 @@ items:
       automation, open-source infrastructure, and co-designed accelerators for
       efficient edge AI.
     location: "KAUST CEMSE"
+    imagesDir: "kaust-seminar"
     link:
       label: "Event page"
       href: "https://cemse.kaust.edu.sa/events/by-type/graduate-seminar/2025/05/04/ai-chips-and-chips-ai"

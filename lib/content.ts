@@ -100,7 +100,16 @@ export type NewsContent = {
     location?: string
     speaker?: string
     link?: { label: string; href: string }
+    imagesDir?: string
   }[]
+}
+
+export type NewsDetail = {
+  slug: string
+  item: NewsContent["items"][number]
+  html: string
+  raw: string
+  images: string[]
 }
 
 export type ContactContent = {
@@ -223,5 +232,61 @@ export async function getResearchDetail(slug: string): Promise<ResearchDetail | 
     area,
     html,
     raw,
+  }
+}
+
+export async function getNewsSlugs() {
+  const news = await readYaml<NewsContent>("news")
+  return news.data.items.map((item) => slugify(item.title))
+}
+
+export async function getNewsDetail(slug: string): Promise<NewsDetail | null> {
+  const news = await readYaml<NewsContent>("news")
+  const item = news.data.items.find((entry) => slugify(entry.title) === slug)
+
+  if (!item) {
+    return null
+  }
+
+  const filePath = path.join(contentDir, "news", `${slug}.md`)
+  let raw = ""
+
+  try {
+    raw = await fs.readFile(filePath, "utf8")
+  } catch (error) {
+    const err = error as NodeJS.ErrnoException
+    if (err.code !== "ENOENT") {
+      throw error
+    }
+  }
+
+  const html = raw.trim() ? await marked.parse(raw) : ""
+  const images = await getNewsImages(item.imagesDir)
+
+  return {
+    slug,
+    item,
+    html,
+    raw,
+    images,
+  }
+}
+
+async function getNewsImages(imagesDir?: string) {
+  if (!imagesDir) return []
+  const dirPath = path.join(process.cwd(), "public", "images", "news", imagesDir)
+
+  try {
+    const entries = await fs.readdir(dirPath)
+    return entries
+      .filter((file) => /\.(png|jpe?g|webp|gif)$/i.test(file))
+      .sort()
+      .map((file) => `/images/news/${imagesDir}/${file}`)
+  } catch (error) {
+    const err = error as NodeJS.ErrnoException
+    if (err.code !== "ENOENT") {
+      throw error
+    }
+    return []
   }
 }

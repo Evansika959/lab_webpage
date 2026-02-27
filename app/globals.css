@@ -127,6 +127,90 @@
   }
 }
 
+@keyframes gds-float {
+  0% {
+    transform: translate3d(0, 10px, 0) scale(0.98);
+    opacity: 0.2;
+  }
+  30% {
+    opacity: 0.7;
+  }
+  50% {
+    transform: translate3d(0, -10px, 0) scale(1);
+    opacity: 0.95;
+  }
+  80% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translate3d(0, 10px, 0) scale(0.98);
+    opacity: 0.2;
+  }
+}
+
+.gds-float {
+  animation: gds-float 12s ease-in-out infinite;
+}
+
+.gds-float-delayed {
+  animation: gds-float 14s ease-in-out infinite;
+  animation-delay: -4s;
+}
+
+@keyframes gds-hero-fade {
+  0% {
+    opacity: 0.05;
+    transform: translate3d(0, 12px, 0) scale(0.98);
+  }
+  35% {
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 0.55;
+    transform: translate3d(0, -8px, 0) scale(1.02);
+  }
+  70% {
+    opacity: 0.3;
+  }
+  100% {
+    opacity: 0.05;
+    transform: translate3d(0, 12px, 0) scale(0.98);
+  }
+}
+
+.gds-hero {
+  animation: gds-hero-fade 16s ease-in-out infinite;
+}
+
+.gds-hero-delayed {
+  animation: gds-hero-fade 18s ease-in-out infinite;
+  animation-delay: -6s;
+}
+
+@keyframes gds-hero-rise {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 18px, 0) scale(0.75);
+  }
+  40% {
+    opacity: 0.35;
+    transform: translate3d(0, 2px, 0) scale(0.98);
+  }
+  70% {
+    opacity: 0.5;
+    transform: translate3d(0, -8px, 0) scale(1.05);
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(0, -18px, 0) scale(1.12);
+  }
+}
+
+.gds-hero-layer {
+  animation: gds-hero-rise 20s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
 ::view-transition-old(root),
 ::view-transition-new(root) {
   animation-duration: 240ms;

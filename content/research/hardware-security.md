@@ -6,7 +6,7 @@ Open Se Cura is built upon an open-source HRoT project called OpenTitan, and it 
 
 2) Flexibility: the modular design of OpenTitan enables seamless integration into diverse hardware environments, including data center servers, storage devices, and peripherals, with minimal system overhead. Additionally, adopters have the option to utilize either open-source or proprietary PDKs and EDA tools to suit their specific requirements.
 
-![Alt text](/images/research/hwsecurity/open_se_cura.png)
+<img src="/images/research/hwsecurity/open_se_cura.png" alt="Alt text" style="display:block; margin: 0 auto; width:60%; max-width:720px;" />
 
 (a) Top view of OpenFASOC-generated Temperature Sensors array integrated with OpenTitan IPs (b) Testing Setup of the initial HRoT implementation.
 

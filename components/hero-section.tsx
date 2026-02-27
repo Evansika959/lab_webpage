@@ -1,6 +1,6 @@
 "use client"
 
-import { useMemo } from "react"
+import { useEffect, useMemo, useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Markdown } from "@/components/markdown"
 import { ArrowRight, Github } from "lucide-react"
@@ -13,6 +13,7 @@ type HeroSectionProps = {
 
 export function HeroSection({ content }: HeroSectionProps) {
   const { data, html } = content
+  const [mounted, setMounted] = useState(false)
   const gdsSources = [
     "/images/gds/sscl2024.png",
     "/images/gds/probe_attack_detector.png",
@@ -23,7 +24,8 @@ export function HeroSection({ content }: HeroSectionProps) {
   ]
   const gdsLayers = useMemo(
     () =>
-      gdsSources.map((src, index) => {
+      mounted
+        ? gdsSources.map((src, index) => {
         const anchors = [
           { left: 4, top: 8 },
           { left: 52, top: 10 },
@@ -49,9 +51,14 @@ export function HeroSection({ content }: HeroSectionProps) {
             animationDuration: `${duration}s`,
           },
         }
-      }),
-    [],
+        })
+        : [],
+    [mounted],
   )
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
